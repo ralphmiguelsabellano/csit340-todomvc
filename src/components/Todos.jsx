@@ -28,6 +28,8 @@ function handleSubmit(e) {
     setTodos(todos.filter((todo) => todo.id !== id))
   }
 
+  const itemsLeft = todos.filter((todo) => !todo.completed).length
+
   return (
     <section className="mx-auto max-w-[550px]">
       <h1 className="text-center text-[80px] font-extralight text-[#b83f45]">
@@ -44,7 +46,7 @@ function handleSubmit(e) {
             />
         </form>
         {todos.length > 0 && (
-          <>
+        <>
         <main className="relative border-t border-[#e6e6e6]">
           <input id="toggle-all" type="checkbox" className="peer sr-only" />
           <label
@@ -88,8 +90,8 @@ function handleSubmit(e) {
         </main>
 
         <footer className="grid h-10 grid-cols-3 items-center border-t border-[#e6e6e6] px-[15px] text-[15px]">
-          <span>
-            <strong className="font-light">1</strong> item left
+         <span>
+            <strong className="font-light">{itemsLeft}</strong> {itemsLeft === 1 ? 'item' : 'items'} left
           </span>
           <ul className="flex justify-center gap-1">
             <li>
